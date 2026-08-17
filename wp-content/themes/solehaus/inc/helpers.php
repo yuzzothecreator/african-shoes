@@ -163,26 +163,32 @@ function solehaus_render_product_card($product, $variant = 'grid') {
             <?php if ($badge) : ?>
                 <span class="sh-badge sh-badge--<?php echo esc_attr(strtolower($badge)); ?>"><?php echo esc_html($badge); ?></span>
             <?php endif; ?>
-            <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($alt); ?>" width="640" height="640" loading="lazy" decoding="async">
+            <span class="sh-card__media-inner">
+                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($alt); ?>" width="640" height="640" loading="lazy" decoding="async">
+            </span>
         </a>
         <div class="sh-card__body">
-            <?php if ($category) : ?>
-                <p class="sh-card__category"><?php echo esc_html($category); ?></p>
-            <?php endif; ?>
+            <div class="sh-card__top">
+                <?php if ($category) : ?>
+                    <p class="sh-card__category"><?php echo esc_html($category); ?></p>
+                <?php endif; ?>
+            </div>
             <h3 class="sh-card__title">
                 <a href="<?php echo esc_url($permalink); ?>"><?php echo esc_html($name); ?></a>
             </h3>
-            <p class="sh-card__price">
-                <span class="sh-price"><?php echo esc_html(solehaus_format_tzs($price)); ?></span>
-                <?php if ($sale_from > $price) : ?>
-                    <s class="sh-price sh-price--was"><?php echo esc_html(solehaus_format_tzs($sale_from)); ?></s>
-                <?php endif; ?>
-            </p>
+            <div class="sh-card__price-row">
+                <p class="sh-card__price">
+                    <span class="sh-price"><?php echo esc_html(solehaus_format_tzs($price)); ?></span>
+                    <?php if ($sale_from > $price) : ?>
+                        <s class="sh-price sh-price--was"><?php echo esc_html(solehaus_format_tzs($sale_from)); ?></s>
+                    <?php endif; ?>
+                </p>
+            </div>
             <?php if ($sizes) : ?>
                 <label class="sh-card__sizes">
-                    <span><?php esc_html_e('Size', 'solehaus'); ?></span>
+                    <span class="sh-card__sizes-label"><?php esc_html_e('Select size', 'solehaus'); ?></span>
                     <select class="sh-size" aria-label="<?php echo esc_attr(sprintf('Select size for %s', $name)); ?>">
-                        <option value=""><?php esc_html_e('Select size', 'solehaus'); ?></option>
+                        <option value=""><?php esc_html_e('Choose size', 'solehaus'); ?></option>
                         <?php foreach ($sizes as $size) : ?>
                             <option value="<?php echo esc_attr($size); ?>"><?php echo esc_html($size); ?></option>
                         <?php endforeach; ?>
@@ -190,11 +196,11 @@ function solehaus_render_product_card($product, $variant = 'grid') {
                 </label>
             <?php endif; ?>
             <div class="sh-card__actions">
-                <a class="sh-btn sh-btn--dark" href="<?php echo esc_url($permalink); ?>">
-                    <?php esc_html_e('View Product', 'solehaus'); ?>
+                <a class="sh-btn sh-btn--outline sh-btn--view" href="<?php echo esc_url($permalink); ?>" aria-label="<?php echo esc_attr(sprintf(__('View product: %s', 'solehaus'), $name)); ?>">
+                    <?php esc_html_e('View', 'solehaus'); ?>
                 </a>
-                <a class="sh-btn sh-btn--whatsapp sh-wa-order" href="<?php echo esc_url(solehaus_whatsapp_url($wa_message)); ?>" target="_blank" rel="noopener noreferrer">
-                    <?php esc_html_e('Order on WhatsApp', 'solehaus'); ?>
+                <a class="sh-btn sh-btn--whatsapp sh-wa-order" href="<?php echo esc_url(solehaus_whatsapp_url($wa_message)); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr(sprintf(__('Order %s on WhatsApp', 'solehaus'), $name)); ?>">
+                    <?php esc_html_e('WhatsApp', 'solehaus'); ?>
                 </a>
             </div>
         </div>

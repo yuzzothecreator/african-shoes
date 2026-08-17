@@ -10,7 +10,7 @@ $image = solehaus_mod('hero_image');
 ?>
 <section class="sh-hero" aria-label="<?php esc_attr_e('Featured collection', 'solehaus'); ?>">
     <div class="sh-hero__media">
-        <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr(sprintf('Stylish footwear lifestyle image for %s in Arusha, Tanzania', solehaus_store_name())); ?>" width="1920" height="1080" fetchpriority="high" decoding="async">
+        <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr(sprintf('Customer browsing stylish footwear at %s in Arusha, Tanzania', solehaus_store_name())); ?>" width="1920" height="1080" fetchpriority="high" decoding="async">
     </div>
     <div class="sh-hero__overlay"></div>
     <div class="sh-container sh-hero__content">

@@ -37,7 +37,7 @@ function solehaus_defaults() {
         'hero_trust'            => '',
         'hero_primary_label'    => 'Shop Collection',
         'hero_secondary_label'  => 'Order on WhatsApp',
-        'hero_image'            => 'https://images.unsplash.com/photo-1515886657613-9f3515c0c79f?auto=format&fit=crop&w=1920&q=80&fm=webp',
+        'hero_image'            => 'https://images.unsplash.com/photo-1556906787-89487169e8f0?auto=format&fit=crop&w=1920&h=1080&q=80&fm=webp',
         'promo_headline'        => 'New styles on Instagram',
         'promo_text'            => 'Follow @tannyshoes_aimmall for footwear updates, new arrivals and product posts.',
         'promo_image'           => 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1600&q=80&fm=webp',

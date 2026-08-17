@@ -21,7 +21,7 @@ window.TANNY_SHOES_CONFIG = {
     text: 'Discover stylish and comfortable footwear for men, women and children from Tanny Shoes in Arusha, Tanzania.',
     primaryLabel: 'Shop Collection',
     secondaryLabel: 'Order on WhatsApp',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515c0c79f?auto=format&fit=crop&w=1920&q=80&fm=webp'
+    image: 'https://images.unsplash.com/photo-1556906787-89487169e8f0?auto=format&fit=crop&w=1920&h=1080&q=80&fm=webp'
   },
   about: {
     headline: 'Footwear for the Whole Family',

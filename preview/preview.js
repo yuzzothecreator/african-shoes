@@ -41,18 +41,21 @@
     return (
       '<article class="sh-card' + (wide ? ' sh-card--wide' : '') + '" data-product-name="' + p.name + '" data-product-price="' + p.price + '" data-product-url="' + url + '">' +
         '<a class="sh-card__media" href="#featured">' + badge +
-          '<img src="' + p.image + '" alt="' + p.alt + '" width="640" height="640" loading="lazy" decoding="async">' +
+          '<span class="sh-card__media-inner">' +
+            '<img src="' + p.image + '" alt="' + p.alt + '" width="640" height="640" loading="lazy" decoding="async">' +
+          '</span>' +
         '</a>' +
         '<div class="sh-card__body">' +
-          '<p class="sh-card__category">' + p.category + '</p>' +
+          '<div class="sh-card__top"><p class="sh-card__category">' + p.category + '</p></div>' +
           '<h3 class="sh-card__title"><a href="#featured">' + p.name + '</a></h3>' +
-          '<p class="sh-card__price"><span class="sh-price">' + tzs(p.price) + '</span>' + was + '</p>' +
-          '<label class="sh-card__sizes"><span>Size</span>' +
-            '<select class="sh-size" aria-label="Select size for ' + p.name + '"><option value="">Select size</option>' + options + '</select>' +
+          '<div class="sh-card__price-row"><p class="sh-card__price"><span class="sh-price">' + tzs(p.price) + '</span>' + was + '</p></div>' +
+          '<label class="sh-card__sizes">' +
+            '<span class="sh-card__sizes-label">Select size</span>' +
+            '<select class="sh-size" aria-label="Select size for ' + p.name + '"><option value="">Choose size</option>' + options + '</select>' +
           '</label>' +
           '<div class="sh-card__actions">' +
-            '<a class="sh-btn sh-btn--dark" href="#featured">View Product</a>' +
-            '<a class="sh-btn sh-btn--whatsapp sh-wa-order" href="' + cfg.whatsappUrl + '?text=' + msg + '" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>' +
+            '<a class="sh-btn sh-btn--outline sh-btn--view" href="#featured" aria-label="View product: ' + p.name + '">View</a>' +
+            '<a class="sh-btn sh-btn--whatsapp sh-wa-order" href="' + cfg.whatsappUrl + '?text=' + msg + '" target="_blank" rel="noopener noreferrer" aria-label="Order ' + p.name + ' on WhatsApp">WhatsApp</a>' +
           '</div>' +
         '</div>' +
       '</article>'
@@ -86,7 +89,7 @@
   var heroImg = document.getElementById('hero-image');
   if (heroImg && cfg.hero && cfg.hero.image) {
     heroImg.src = cfg.hero.image;
-    heroImg.alt = 'Stylish footwear lifestyle image for ' + cfg.storeName + ' in Arusha, Tanzania';
+    heroImg.alt = 'Customer browsing stylish footwear at ' + cfg.storeName + ' in Arusha, Tanzania';
   }
 
   var setText = function (id, value) {
