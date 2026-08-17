@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1240px"
+    },
+    "color": {
+      "palette": [
+        { "slug": "ink", "name": "Ink", "color": "#0B0B0B" },
+        { "slug": "paper", "name": "Paper", "color": "#FFFFFF" },
+        { "slug": "mist", "name": "Mist", "color": "#F5F5F4" },
+        { "slug": "stone", "name": "Stone", "color": "#A8A29E" },
+        { "slug": "accent", "name": "Pink", "color": "#E91E8C" },
+        { "slug": "secondary", "name": "Light Blue", "color": "#7DD3FC" }
+      ],
+      "defaultPalette": false
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "headings",
+          "name": "Manrope",
+          "fontFamily": "Manrope, system-ui, sans-serif"
+        },
+        {
+          "slug": "body",
+          "name": "Inter",
+          "fontFamily": "Inter, system-ui, sans-serif"
+        }
+      ]
+    },
+    "useRootPaddingAwareAlignments": true
+  },
+  "styles": {
+    "color": {
+      "background": "#FFFFFF",
+      "text": "#0B0B0B"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "fontSize": "1rem",
+      "lineHeight": "1.65"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--headings)",
+          "fontWeight": "700"
+        }
+      },
+      "button": {
+        "color": {
+          "background": "#E91E8C",
+          "text": "#FFFFFF"
+        },
+        "border": { "radius": "999px" }
+      }
+    }
+  }
+}
