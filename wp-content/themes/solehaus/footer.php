@@ -50,11 +50,24 @@
 
             <div>
                 <h2><?php esc_html_e('Customer support', 'solehaus'); ?></h2>
-                <ul class="sh-footer__list">
-                    <li><a href="<?php echo esc_url(home_url('/#contact')); ?>"><?php esc_html_e('Contact', 'solehaus'); ?></a></li>
-                    <li><a href="<?php echo esc_url(get_privacy_policy_url() ? get_privacy_policy_url() : home_url('/privacy-policy/')); ?>"><?php esc_html_e('Privacy Policy', 'solehaus'); ?></a></li>
-                    <li><a href="<?php echo esc_url(home_url('/terms/')); ?>"><?php esc_html_e('Terms and Conditions', 'solehaus'); ?></a></li>
-                </ul>
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'footer_support',
+                    'menu_class'     => 'sh-footer__list',
+                    'container'      => false,
+                    'fallback_cb'    => static function () {
+                        $contact = get_page_by_path('contact');
+                        $delivery = get_page_by_path('delivery-and-returns');
+                        $privacy = get_privacy_policy_url() ? get_privacy_policy_url() : home_url('/privacy-policy/');
+                        echo '<ul class="sh-footer__list">';
+                        echo '<li><a href="' . esc_url($contact ? get_permalink($contact) : home_url('/contact/')) . '">' . esc_html__('Contact', 'solehaus') . '</a></li>';
+                        echo '<li><a href="' . esc_url($delivery ? get_permalink($delivery) : home_url('/delivery-and-returns/')) . '">' . esc_html__('Delivery and Returns', 'solehaus') . '</a></li>';
+                        echo '<li><a href="' . esc_url($privacy) . '">' . esc_html__('Privacy Policy', 'solehaus') . '</a></li>';
+                        echo '<li><a href="' . esc_url(home_url('/terms/')) . '">' . esc_html__('Terms and Conditions', 'solehaus') . '</a></li>';
+                        echo '</ul>';
+                    },
+                ));
+                ?>
                 <h3><?php esc_html_e('Related Instagram stores', 'solehaus'); ?></h3>
                 <ul class="sh-footer__list">
                     <?php foreach (solehaus_related_stores() as $store) : ?>

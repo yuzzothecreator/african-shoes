@@ -4,62 +4,11 @@
   var cfg = window.TANNY_SHOES_CONFIG;
   if (!cfg) return;
 
-  var FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&h=900&q=80&fm=webp';
-
-  document.documentElement.style.setProperty('--sh-accent', cfg.accent);
-  document.documentElement.style.setProperty('--sh-accent-secondary', cfg.secondary);
-
-  function bindImageFallbacks(root) {
-    (root || document).querySelectorAll('img').forEach(function (img) {
-      if (img.dataset.fallbackBound) return;
-      img.dataset.fallbackBound = '1';
-      img.addEventListener('error', function onError() {
-        if (img.dataset.fallbackApplied) return;
-        img.dataset.fallbackApplied = '1';
-        img.src = FALLBACK_IMAGE;
-        img.alt = img.alt || 'Footwear image preview for Tanny Shoes';
-      });
-    });
-  }
-
-  function tzs(n) {
-    return 'TZS ' + Number(n).toLocaleString('en-TZ');
-  }
-
-  function waMessage(name, price, url, size) {
-    return 'Hello Tanny Shoes, I am interested in ' + name + '. Preferred size: ' + (size || 'Not selected') + '. Product price: ' + tzs(price) + '. Product link: ' + url + '. Is it available?';
-  }
+  var layout = window.PreviewLayout;
 
   function productCard(p, wide) {
-    var options = p.sizes.map(function (s) {
-      return '<option value="' + s + '">' + s + '</option>';
-    }).join('');
-    var was = p.was > p.price ? '<s class="sh-price sh-price--was">' + tzs(p.was) + '</s>' : '';
-    var badge = p.badge ? '<span class="sh-badge sh-badge--' + p.badge.toLowerCase() + '">' + p.badge + '</span>' : '';
-    var url = window.location.href.split('#')[0] + '#featured';
-    var msg = encodeURIComponent(waMessage(p.name, p.price, url, ''));
-    return (
-      '<article class="sh-card' + (wide ? ' sh-card--wide' : '') + '" data-product-name="' + p.name + '" data-product-price="' + p.price + '" data-product-url="' + url + '">' +
-        '<a class="sh-card__media" href="#featured">' + badge +
-          '<span class="sh-card__media-inner">' +
-            '<img src="' + p.image + '" alt="' + p.alt + '" width="640" height="640" loading="lazy" decoding="async">' +
-          '</span>' +
-        '</a>' +
-        '<div class="sh-card__body">' +
-          '<div class="sh-card__top"><p class="sh-card__category">' + p.category + '</p></div>' +
-          '<h3 class="sh-card__title"><a href="#featured">' + p.name + '</a></h3>' +
-          '<div class="sh-card__price-row"><p class="sh-card__price"><span class="sh-price">' + tzs(p.price) + '</span>' + was + '</p></div>' +
-          '<label class="sh-card__sizes">' +
-            '<span class="sh-card__sizes-label">Select size</span>' +
-            '<select class="sh-size" aria-label="Select size for ' + p.name + '"><option value="">Choose size</option>' + options + '</select>' +
-          '</label>' +
-          '<div class="sh-card__actions">' +
-            '<a class="sh-btn sh-btn--outline sh-btn--view" href="#featured" aria-label="View product: ' + p.name + '">View</a>' +
-            '<a class="sh-btn sh-btn--whatsapp sh-wa-order" href="' + cfg.whatsappUrl + '?text=' + msg + '" target="_blank" rel="noopener noreferrer" aria-label="Order ' + p.name + ' on WhatsApp">WhatsApp</a>' +
-          '</div>' +
-        '</div>' +
-      '</article>'
-    );
+    if (layout) return layout.productCard(p, wide);
+    return '';
   }
 
   document.title = cfg.storeName + ' — Shoes for Every Step';
@@ -78,6 +27,7 @@
 
   var logo = document.getElementById('site-logo');
   if (logo) {
+    logo.setAttribute('href', layout ? layout.pageUrl('home') : 'index.html');
     logo.innerHTML = '<span class="sh-logo__icon" aria-hidden="true">TS</span><span>' + cfg.storeName + '</span>';
     logo.setAttribute('aria-label', cfg.storeName);
   }
@@ -92,6 +42,9 @@
     heroImg.alt = 'Customer browsing stylish footwear at ' + cfg.storeName + ' in Arusha, Tanzania';
   }
 
+  var heroShop = document.querySelector('.sh-hero__actions .sh-btn--light');
+  if (heroShop && layout) heroShop.setAttribute('href', layout.pageUrl('shop'));
+
   var setText = function (id, value) {
     var el = document.getElementById(id);
     if (el) el.textContent = value;
@@ -105,8 +58,9 @@
   var cats = document.getElementById('category-grid');
   if (cats) {
     cats.innerHTML = cfg.categories.map(function (cat) {
+      var href = layout ? layout.pageUrl('shop') + '?category=' + cat.slug : 'shop.html?category=' + cat.slug;
       return (
-        '<a class="sh-cat" href="#featured">' +
+        '<a class="sh-cat" href="' + href + '">' +
           '<img src="' + cat.image + '" alt="' + cat.alt + '" width="640" height="800" loading="lazy" decoding="async">' +
           '<span class="sh-cat__label"><strong>' + cat.name + '</strong><em>Explore Collection</em></span>' +
         '</a>'
@@ -122,6 +76,10 @@
 
   setText('about-headline', cfg.about.headline);
   setText('about-text', cfg.about.text);
+
+  var aboutCta = document.querySelector('#about .sh-btn--dark');
+  if (aboutCta && layout) aboutCta.setAttribute('href', layout.pageUrl('contact'));
+
   setText('community-headline', cfg.community.headline);
   setText('community-text', cfg.community.text);
   setText('community-followers', cfg.instagramFollowers);
@@ -154,11 +112,39 @@
     }).join('');
   }
 
+  if (layout) {
+    var shopLinks = document.getElementById('footer-shop-links');
+    if (shopLinks) {
+      shopLinks.innerHTML =
+        '<li><a href="' + layout.pageUrl('home') + '">Home</a></li>' +
+        '<li><a href="' + layout.pageUrl('shop') + '">Shop</a></li>' +
+        '<li><a href="' + layout.pageUrl('home') + '#arrivals">New Arrivals</a></li>' +
+        '<li><a href="' + layout.pageUrl('home') + '#stores">Our Stores</a></li>';
+    }
+
+    document.querySelectorAll('.sh-footer__list a[href="#contact"]').forEach(function (link) {
+      if (link.textContent.indexOf('Contact') !== -1) link.setAttribute('href', layout.pageUrl('contact'));
+    });
+
+    var footerBar = document.querySelector('.sh-footer__bar-inner p:last-child');
+    if (footerBar) {
+      footerBar.innerHTML =
+        '<a href="' + layout.pageUrl('privacy') + '">Privacy Policy</a> ' +
+        '<a href="' + layout.pageUrl('terms') + '">Terms and Conditions</a>';
+    }
+
+    var cartLink = document.querySelector('.sh-cart-link');
+    if (cartLink) cartLink.setAttribute('href', layout.pageUrl('shop'));
+  }
+
   document.querySelectorAll('[data-instagram-link]').forEach(function (el) {
     el.setAttribute('href', cfg.instagramUrl);
   });
 
-  bindImageFallbacks(document);
+  document.documentElement.style.setProperty('--sh-accent', cfg.accent);
+  document.documentElement.style.setProperty('--sh-accent-secondary', cfg.secondary);
+
+  if (layout) layout.bindImageFallbacks(document);
 
   window.solehausData = {
     ajaxUrl: '',

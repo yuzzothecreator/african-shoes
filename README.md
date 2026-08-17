@@ -12,6 +12,19 @@ python -m http.server 8080
 
 Then visit http://localhost:8080/preview/index.html
 
+### Preview pages
+
+| Page | URL |
+| --- | --- |
+| Home | `/preview/index.html` |
+| Shop | `/preview/shop.html` |
+| About | `/preview/about.html` |
+| Contact | `/preview/contact.html` |
+| Product demo | `/preview/product.html?id=demo-mens-casual-sneaker` |
+| Privacy Policy | `/preview/privacy.html` |
+| Terms | `/preview/terms.html` |
+| Delivery & Returns | `/preview/delivery.html` |
+
 ## Business configuration
 
 | Setting | Location |
@@ -27,6 +40,20 @@ Then visit http://localhost:8080/preview/index.html
 - **WhatsApp:** +255 624 041 062 → https://wa.me/255624041062
 - **Instagram:** @tannyshoes_aimmall
 - **Brand colours:** Pink `#E91E8C`, light blue `#7DD3FC`
+
+## WordPress pages
+
+After demo import, these pages are created automatically:
+
+| Page | URL | Template |
+| --- | --- | --- |
+| Home | `/` | Landing (front page) |
+| Shop | `/shop/` | WooCommerce |
+| About | `/about/` | `page-about.php` |
+| Contact | `/contact/` | `page-contact.php` |
+| Privacy Policy | `/privacy-policy/` | `page-privacy-policy.php` |
+| Terms | `/terms/` | `page-terms.php` |
+| Delivery & Returns | `/delivery-and-returns/` | `page-delivery-and-returns.php` |
 
 ## WordPress install
 

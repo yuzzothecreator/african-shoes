@@ -44,6 +44,8 @@ function solehaus_instagram_handle() {
 
 function solehaus_nav_fallback($args = array()) {
     $shop = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/shop/');
+    $contact = get_page_by_path('contact');
+    $contact_url = $contact ? get_permalink($contact) : home_url('/contact/');
     $items = array(
         array('Home', home_url('/')),
         array('Shop', $shop),
@@ -52,7 +54,7 @@ function solehaus_nav_fallback($args = array()) {
         array('Kids', solehaus_term_link('kids-shoes')),
         array('New Arrivals', home_url('/#arrivals')),
         array('Our Stores', home_url('/#stores')),
-        array('Contact', home_url('/#contact')),
+        array('Contact', $contact_url),
     );
 
     echo '<ul class="' . esc_attr($args['menu_class'] ?? 'sh-nav') . '">';

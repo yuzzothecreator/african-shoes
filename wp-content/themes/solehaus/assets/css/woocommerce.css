@@ -20,33 +20,16 @@
   width: auto !important;
   float: none !important;
   margin: 0 !important;
-  background: #fff;
-  border: 1px solid var(--sh-line);
-  border-radius: var(--sh-radius);
-  overflow: hidden;
-  padding: 0 0 1rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
 }
 
-.woocommerce ul.products li.product img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  margin: 0 0 0.8rem;
+.woocommerce ul.products li.product .sh-card {
+  height: 100%;
 }
-
-.woocommerce ul.products li.product .woocommerce-loop-product__title {
-  font-size: 1rem;
-  padding: 0 1rem;
-}
-
-.woocommerce ul.products li.product .price {
-  display: block;
-  padding: 0 1rem 0.8rem;
-  font-weight: 700;
-  color: var(--sh-ink);
-}
-
-.woocommerce ul.products li.product .button,
 .woocommerce a.button,
 .woocommerce button.button,
 .woocommerce input.button,

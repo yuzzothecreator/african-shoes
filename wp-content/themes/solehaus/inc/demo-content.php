@@ -351,6 +351,10 @@ function solehaus_import_pages() {
             'title'   => 'Contact',
             'content' => "<!-- wp:paragraph --><p>Contact Tanny Shoes in Arusha, Tanzania on WhatsApp or Instagram. Edit contact details under Appearance → Customise → Tanny Shoes.</p><!-- /wp:paragraph -->",
         ),
+        'about' => array(
+            'title'   => 'About',
+            'content' => '',
+        ),
         'privacy-policy' => array(
             'title'   => 'Privacy Policy',
             'content' => solehaus_privacy_content(),
@@ -404,6 +408,10 @@ function solehaus_import_pages() {
 
 function solehaus_import_menus() {
     $shop = wc_get_page_permalink('shop');
+    $contact = get_page_by_path('contact');
+    $about = get_page_by_path('about');
+    $contact_url = $contact ? get_permalink($contact) : home_url('/contact/');
+    $about_url = $about ? get_permalink($about) : home_url('/about/');
     $primary_items = array(
         'Home'         => home_url('/'),
         'Shop'         => $shop,
@@ -412,15 +420,16 @@ function solehaus_import_menus() {
         'Kids'         => solehaus_term_link('kids-shoes'),
         'New Arrivals' => home_url('/#arrivals'),
         'Our Stores'   => home_url('/#stores'),
-        'Contact'      => home_url('/#contact'),
+        'Contact'      => $contact_url,
     );
     solehaus_save_menu('Solehaus Primary', 'primary', $primary_items);
 
     solehaus_save_menu('Solehaus Quick Links', 'footer_quick', array(
         'Home'         => home_url('/'),
         'Shop'         => $shop,
+        'About'        => $about_url,
         'New Arrivals' => home_url('/#arrivals'),
-        'Contact'      => home_url('/#contact'),
+        'Contact'      => $contact_url,
     ));
 
     $cats = array();
@@ -433,7 +442,7 @@ function solehaus_import_menus() {
     $terms   = get_page_by_path('terms');
     $delivery = get_page_by_path('delivery-and-returns');
     solehaus_save_menu('Solehaus Support', 'footer_support', array(
-        'Contact'              => home_url('/#contact'),
+        'Contact'              => $contact_url,
         'Delivery and Returns' => $delivery ? get_permalink($delivery) : home_url('/delivery-and-returns/'),
         'Privacy Policy'       => $privacy ? get_permalink($privacy) : home_url('/privacy-policy/'),
         'Terms and Conditions' => $terms ? get_permalink($terms) : home_url('/terms/'),

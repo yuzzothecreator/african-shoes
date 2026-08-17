@@ -14,7 +14,7 @@
             <p class="sh-kicker"><?php esc_html_e('About us', 'solehaus'); ?></p>
             <h2 id="sh-story-title"><?php echo esc_html(solehaus_mod('story_headline')); ?></h2>
             <?php echo solehaus_nl2p(solehaus_mod('story_text')); ?>
-            <a class="sh-btn sh-btn--dark" href="<?php echo esc_url(home_url('/#contact')); ?>"><?php esc_html_e('Contact Tanny Shoes', 'solehaus'); ?></a>
+            <a class="sh-btn sh-btn--dark" href="<?php echo esc_url(get_page_by_path('contact') ? get_permalink(get_page_by_path('contact')) : home_url('/contact/')); ?>"><?php esc_html_e('Contact Tanny Shoes', 'solehaus'); ?></a>
         </div>
     </div>
 </section>

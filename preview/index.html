@@ -46,7 +46,7 @@
         <span></span><span></span><span></span>
       </button>
       <div class="sh-logo">
-        <a class="sh-logo__word sh-logo__mark" id="site-logo" href="#primary"><span class="sh-logo__icon" aria-hidden="true">TS</span><span>Tanny Shoes</span></a>
+        <a class="sh-logo__word sh-logo__mark" id="site-logo" href="index.html"><span class="sh-logo__icon" aria-hidden="true">TS</span><span>Tanny Shoes</span></a>
       </div>
       <nav class="sh-nav-wrap" id="primary-navigation" aria-label="Primary">
         <ul class="sh-nav" id="primary-nav-list"></ul>
@@ -55,7 +55,7 @@
         <button class="sh-icon-btn" type="button" data-open-search aria-haspopup="dialog" aria-controls="sh-search" aria-label="Search products">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
-        <a class="sh-icon-btn sh-cart-link" href="#featured" aria-label="Shopping bag">
+        <a class="sh-icon-btn sh-cart-link" href="shop.html" aria-label="Shopping bag">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 7h15l-1.5 9h-12L5 4H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/></svg>
           <span class="sh-cart-count" data-count="0">0</span>
         </a>
@@ -89,7 +89,7 @@
         <h1 id="hero-headline"></h1>
         <p class="sh-hero__lead" id="hero-text"></p>
         <div class="sh-hero__actions">
-          <a class="sh-btn sh-btn--light" href="#featured"><span id="hero-primary-label"></span></a>
+          <a class="sh-btn sh-btn--light" href="shop.html"><span id="hero-primary-label"></span></a>
           <a class="sh-btn sh-btn--whatsapp" data-wa-link href="https://wa.me/255624041062" target="_blank" rel="noopener noreferrer"><span id="hero-secondary-label"></span></a>
         </div>
       </div>
@@ -124,7 +124,7 @@
             <p class="sh-kicker">Just in</p>
             <h2 id="sh-arrivals-title">New Arrivals</h2>
           </div>
-          <a class="sh-text-link" href="#featured">View all</a>
+          <a class="sh-text-link" href="shop.html">View all</a>
         </div>
         <div class="sh-rail" id="arrivals-rail" tabindex="0" aria-label="New arrival products"></div>
       </div>
@@ -139,7 +139,7 @@
           <p class="sh-kicker">About us</p>
           <h2 id="about-headline"></h2>
           <p id="about-text"></p>
-          <a class="sh-btn sh-btn--dark" href="#contact">Contact Tanny Shoes</a>
+          <a class="sh-btn sh-btn--dark" href="contact.html">Contact Tanny Shoes</a>
         </div>
       </div>
     </section>
@@ -207,7 +207,7 @@
   <footer class="sh-footer">
     <div class="sh-container sh-footer__grid">
       <div class="sh-footer__brand">
-        <a class="sh-logo__word sh-logo__word--light" href="#primary">Tanny Shoes</a>
+        <a class="sh-logo__word sh-logo__word--light" href="index.html">Tanny Shoes</a>
         <p id="footer-about"></p>
         <p class="sh-footer__location" id="footer-city"></p>
         <p class="sh-footer__wa"><a data-wa-link href="https://wa.me/255624041062" target="_blank" rel="noopener noreferrer" id="footer-whatsapp"></a></p>
@@ -215,18 +215,19 @@
       <div>
         <h2>Shop</h2>
         <ul class="sh-footer__list" id="footer-shop-links">
-          <li><a href="#primary">Home</a></li>
-          <li><a href="#featured">Shop</a></li>
-          <li><a href="#arrivals">New Arrivals</a></li>
-          <li><a href="#stores">Our Stores</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="index.html#arrivals">New Arrivals</a></li>
+          <li><a href="index.html#stores">Our Stores</a></li>
         </ul>
       </div>
       <div>
         <h2>Support</h2>
         <ul class="sh-footer__list">
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Privacy Policy</a></li>
-          <li><a href="#contact">Terms and Conditions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+          <li><a href="delivery.html">Delivery and Returns</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
         </ul>
       </div>
       <div>
@@ -237,13 +238,14 @@
     <div class="sh-footer__bar">
       <div class="sh-container sh-footer__bar-inner">
         <p>&copy; <span id="copyright-year"></span> Tanny Shoes. All rights reserved.</p>
-        <p><a href="#contact">Privacy Policy</a> <a href="#contact">Terms and Conditions</a></p>
+        <p><a href="privacy.html">Privacy Policy</a> <a href="terms.html">Terms and Conditions</a></p>
       </div>
     </div>
   </footer>
 
   <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
   <script src="config.js"></script>
+  <script src="layout.js"></script>
   <script src="preview.js"></script>
 </body>
 </html>
