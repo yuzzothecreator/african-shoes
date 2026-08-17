@@ -1,0 +1,104 @@
+/* WooCommerce — aligned with Solehaus storefront */
+
+.woocommerce .sh-shop-content .page-title,
+.woocommerce-products-header__title {
+  font-family: var(--sh-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+
+.woocommerce ul.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.woocommerce ul.products li.product {
+  width: auto !important;
+  float: none !important;
+  margin: 0 !important;
+  background: #fff;
+  border: 1px solid var(--sh-line);
+  border-radius: var(--sh-radius);
+  overflow: hidden;
+  padding: 0 0 1rem;
+}
+
+.woocommerce ul.products li.product img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin: 0 0 0.8rem;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+
+.woocommerce ul.products li.product .price {
+  display: block;
+  padding: 0 1rem 0.8rem;
+  font-weight: 700;
+  color: var(--sh-ink);
+}
+
+.woocommerce ul.products li.product .button,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit {
+  background: var(--sh-ink) !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  padding: 0.7rem 1.1rem !important;
+  font-weight: 600;
+  border: 0;
+}
+
+.woocommerce span.onsale {
+  background: var(--sh-accent);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  line-height: 1;
+  min-height: 0;
+}
+
+.woocommerce div.product {
+  display: grid;
+  gap: 2rem;
+}
+
+.woocommerce div.product .summary {
+  margin: 0;
+}
+
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+  border-top-color: var(--sh-accent);
+}
+
+.woocommerce-cart table.cart,
+.woocommerce-checkout .woocommerce {
+  background: #fff;
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+  background: var(--sh-accent);
+}
+
+.woocommerce-ordering select {
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--sh-line);
+}
+
+@media (min-width: 900px) {
+  .woocommerce ul.products { grid-template-columns: repeat(3, 1fr); }
+  .woocommerce div.product { grid-template-columns: 1fr 1fr; align-items: start; }
+}

@@ -1,0 +1,7 @@
+body { font-family: Inter, system-ui, sans-serif; }
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3 {
+  font-family: Manrope, Inter, sans-serif;
+  letter-spacing: -0.03em;
+}
